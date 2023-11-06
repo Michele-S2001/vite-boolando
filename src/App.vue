@@ -1,9 +1,11 @@
 <script>
 import Header from './components/Header.vue';
+import Main from './components/Main.vue';
 
 export default {
   components: {
     Header,
+    Main,
   },
 
   data() {
@@ -17,8 +19,7 @@ export default {
 
 <template>
   <Header />
-  <!-- <h2>{{ message }}</h2> -->
-
+  <Main />
 </template>
 
 <style lang="scss">
