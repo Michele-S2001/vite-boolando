@@ -1,27 +1,54 @@
- /* RESET RULES  */
- * {
+@use './partials/variables' as *;
+/* RESET RULES  */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- }
+}
 
- body {
+body {
   font-family: Arial, Helvetica, sans-serif
- }
+}
 
- img {
+img {
   max-width: 100%;
   display: block;
- }
+}
 
- ul,
- ol,
- menu {
+ul,
+ol,
+menu {
   list-style: none;
- }
+}
 
- a {
+a {
   text-decoration: none;
   color: currentColor;
   display: inline-block;
- }
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.white-text {
+  color: $white;
+}
