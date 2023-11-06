@@ -52,3 +52,12 @@ a {
 .white-text {
   color: $white;
 }
+
+.col {
+  padding: 10px;
+}
+
+.col-4 {
+  flex-basis: calc((100% / 12) * 4);
+  padding-bottom: 30px;
+}
