@@ -1,6 +1,7 @@
 <script>
 
 export default {
+  // props: ['thumbnailOne', 'thumbnailTwo'],
   data() {
     return {
       message: 'product card',

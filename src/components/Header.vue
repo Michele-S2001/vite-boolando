@@ -4,6 +4,16 @@ export default {
   data() {
     return {
       message: 'header',
+      genders: [
+        'Donna',
+        'Uomo',
+        'Bambini'
+      ],
+      socialIcons: [
+        '/img/nav-icons/user-regular.svg',
+        '/img/nav-icons/heart-regular.svg',
+        '/img/nav-icons/bag-shopping-solid.svg'
+      ]
     }
   }
 }
@@ -14,31 +24,23 @@ export default {
   <header class="page-header white-text">
     <nav class="container">
       <div class="row justify-space-between align-center">
+        
         <ul class="nav-genders">
-          <li class="nav-gender"><a href="#">Donna</a></li>
-          <li class="nav-gender"><a href="#">Uomo</a></li>
-          <li class="nav-gender"><a href="#">Bambini</a></li>
+          <li v-for="(gender, i) in genders" class="nav-gender" :key="i">
+            <a href="#">{{ gender }}</a>
+          </li>
         </ul>
         
         <img class="boolean-icon" src="/img/boolean-logo.png" alt="logo">
         
         <ul class="nav-icons align-center">
-          <li>
+          <li v-for="(iconPath, index) in socialIcons" :key="index">
             <a href="#">
-              <img class="nav-icon" src="/img/nav-icons/user-regular.svg" alt="user icon">
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img class="nav-icon" src="/img/nav-icons/heart-regular.svg" alt="user icon">
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img class="nav-icon" src="/img/nav-icons/bag-shopping-solid.svg" alt="user icon">
+              <img class="nav-icon" :src="iconPath" alt="user icon">
             </a>
           </li>
         </ul>
+
       </div>
     </nav>
   </header>
