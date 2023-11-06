@@ -4,6 +4,13 @@ export default {
   data() {
     return {
       message: 'Footer',
+      socialIcons: [
+        '/img/social-icons/square-x-twitter.svg',
+        '/img/social-icons/square-facebook.svg',
+        '/img/social-icons/square-instagram.svg',
+        '/img/social-icons/square-pinterest.svg',
+        '/img/social-icons/square-youtube.svg'
+      ]
     }
   }
 }
@@ -36,20 +43,8 @@ export default {
           <div class="footer-social-section">
             <h4>Trovaci anche su</h4>
             <div class="footer-social-icons">
-              <a href="#">
-                <img class="footer-social-icon" src="/img/social-icons/square-x-twitter.svg" alt="social icon">
-              </a>
-              <a href="#">
-                <img class="footer-social-icon" src="/img/social-icons/square-facebook.svg" alt="social icon">
-              </a>
-              <a href="#">
-                <img class="footer-social-icon" src="/img/social-icons/square-instagram.svg" alt="social icon">
-              </a>
-              <a href="#">
-                <img class="footer-social-icon" src="/img/social-icons/square-pinterest.svg" alt="social icon">
-              </a>
-              <a href="#">
-                <img class="footer-social-icon" src="/img/social-icons/square-youtube.svg" alt="social icon">
+              <a v-for="(socialIcon, i) in socialIcons" href="#" :key="i">
+                <img class="footer-social-icon" :src="socialIcon" alt="social icon">
               </a>
             </div>
           </div>
