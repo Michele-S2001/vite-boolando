@@ -26,7 +26,7 @@ export default {
   <main class="page-content">
     <div class="container">
       <div class="row">
-        <ProductCard v-for="(product, i) in products" :card="product"/>
+        <ProductCard v-for="(product) in products" :card="product"/>
       </div>
     </div>
   </main>

@@ -15,7 +15,15 @@ export default {
   methods: {
     toggleInFavorites() {
       this.card.isInFavorites = !this.card.isInFavorites
-    }
+    },
+
+    checkBadgeType(sticker) {
+      if(sticker.type === 'discount') {
+        return 'sales-rate';
+      } else {
+        return 'eco-tag';
+      }
+    },
   }
 }
 
@@ -28,8 +36,12 @@ export default {
       <img :src="card.frontImage" alt="A man with white Levi's t-shirt">
       <img class="product-image-hover" :src="card.backImage" alt="A man with white Levi's t-shirt and a jacket">
       <div class="tag-wrapper">
-        <div class="product-sticker sales-rate"> -50% </div>
-        <div class="product-sticker eco-tag"> Sostenibilità </div>
+        <div 
+          v-for="badge in card.badges"
+          class="product-sticker"
+          :class="checkBadgeType(badge)"> 
+          {{ badge.value }}
+        </div>
       </div>
       <div @click="toggleInFavorites()"
        class="product-sticker like-button"
@@ -41,8 +53,8 @@ export default {
       <span class="brand">{{ card.brand }}</span>   
       <strong class="label">{{ card.name }}</strong>
       <div class="prices">
-        <strong class="price">{{ card.price }} &euro;</strong>
-        <!-- <span class="price">29,99 &euro;</span> -->
+        <strong class="price">19.00 &euro;</strong>
+        <span class="price">{{ card.price }} &euro;</span>
       </div>
     </div>
   </div>
@@ -96,6 +108,10 @@ export default {
       &:hover {
         color: $red;
       }
+
+      &.favorites {
+        color: $red;
+      }
     }
   }
 }
@@ -128,8 +144,6 @@ export default {
   opacity: 1;
 }
 
-.favorites {
-  color: $red;
-}
+
 
 </style>
