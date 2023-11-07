@@ -5,14 +5,32 @@ export default {
     return {
       message: 'header',
       genders: [
-        'Donna',
-        'Uomo',
-        'Bambini'
+        {
+          gender: 'Donna',
+          href: '#'
+        },
+        {
+          gender: 'Uomo',
+          href: '#'
+        },
+        {
+          gender: 'Bambini',
+          href: '#'
+        }
       ],
       socialIcons: [
-        '/img/nav-icons/user-regular.svg',
-        '/img/nav-icons/heart-regular.svg',
-        '/img/nav-icons/bag-shopping-solid.svg'
+        {
+          path: '/img/nav-icons/user-regular.svg',
+          href: '#'
+        },
+        {
+          path: '/img/nav-icons/heart-regular.svg',
+          href: '#'
+        },
+        {
+          path: '/img/nav-icons/bag-shopping-solid.svg',
+          href: '#'
+        }
       ]
     }
   }
@@ -26,17 +44,17 @@ export default {
       <div class="row justify-space-between align-center">
         
         <ul class="nav-genders">
-          <li v-for="(gender, i) in genders" class="nav-gender" :key="i">
-            <a href="#">{{ gender }}</a>
+          <li v-for="(menuItem, i) in genders" class="nav-gender" :key="i">
+            <a :href="menuItem.href">{{ menuItem.gender }}</a>
           </li>
         </ul>
         
         <img class="boolean-icon" src="/img/boolean-logo.png" alt="logo">
         
         <ul class="nav-icons align-center">
-          <li v-for="(iconPath, index) in socialIcons" :key="index">
-            <a href="#">
-              <img class="nav-icon" :src="iconPath" alt="user icon">
+          <li v-for="(icon, index) in socialIcons" :key="index">
+            <a :href="icon.href">
+              <img class="nav-icon" :src="icon.path" alt="user icon">
             </a>
           </li>
         </ul>
