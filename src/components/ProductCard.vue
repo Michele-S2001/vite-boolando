@@ -1,10 +1,20 @@
 <script>
 
 export default {
-  // props: ['thumbnailOne', 'thumbnailTwo'],
+  props: {
+    card: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       message: 'product card',
+    }
+  },
+  methods: {
+    toggleInFavorites() {
+      this.card.isInFavorites = !this.card.isInFavorites
     }
   }
 }
@@ -12,23 +22,27 @@ export default {
 </script>
 
 <template>
-
+  
   <div class="col col-4">
     <div class="product-card">
-      <img src="/img/1.webp" alt="A man with white Levi's t-shirt">
-      <img class="product-image-hover" src="/img/1b.webp" alt="A man with white Levi's t-shirt and a jacket">
+      <img :src="card.frontImage" alt="A man with white Levi's t-shirt">
+      <img class="product-image-hover" :src="card.backImage" alt="A man with white Levi's t-shirt and a jacket">
       <div class="tag-wrapper">
         <div class="product-sticker sales-rate"> -50% </div>
         <div class="product-sticker eco-tag"> Sostenibilità </div>
       </div>
-      <div class="product-sticker like-button"> &hearts; </div>  
+      <div @click="toggleInFavorites()"
+       class="product-sticker like-button"
+       :class="{favorites: card.isInFavorites}">
+       &hearts; 
+      </div>  
     </div>
     <div class="product-description">
-      <span class="brand">Levi's</span>   
-      <strong class="label">relaxed fit tee unisex</strong>
+      <span class="brand">{{ card.brand }}</span>   
+      <strong class="label">{{ card.name }}</strong>
       <div class="prices">
-        <strong class="price">14,99 &euro;</strong>
-        <span class="price">29,99 &euro;</span>
+        <strong class="price">{{ card.price }} &euro;</strong>
+        <!-- <span class="price">29,99 &euro;</span> -->
       </div>
     </div>
   </div>
@@ -112,6 +126,10 @@ export default {
 
 .col:hover .product-image-hover {
   opacity: 1;
+}
+
+.favorites {
+  color: $red;
 }
 
 </style>
