@@ -13,10 +13,6 @@ export default {
       products: productsObj.products
     }
   },
-
-  mounted() {
-    console.log(this.products);
-  }
 }
 
 </script>

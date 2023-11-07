@@ -17,14 +17,12 @@ export default {
       this.card.isInFavorites = !this.card.isInFavorites
     },
 
-    checkBadgeType(sticker) {
-      if(sticker.type === 'discount') {
-        return 'sales-rate';
-      } else {
-        return 'eco-tag';
-      }
-    },
-  }
+    discount() {
+      const discount = (100 - Math.abs(parseInt(this.card.badges.at(-1).value))) / 100;
+      const discountedPrice = (this.card.price * discount).toFixed(2);
+      return discountedPrice
+    }
+  },
 }
 
 </script>
@@ -39,7 +37,7 @@ export default {
         <div 
           v-for="badge in card.badges"
           class="product-sticker"
-          :class="checkBadgeType(badge)"> 
+          :class="badge.type"> 
           {{ badge.value }}
         </div>
       </div>
@@ -53,7 +51,9 @@ export default {
       <span class="brand">{{ card.brand }}</span>   
       <strong class="label">{{ card.name }}</strong>
       <div class="prices">
-        <strong class="price">19.00 &euro;</strong>
+        <strong v-if="card.badges.at(-1).type === 'discount'" class="price">
+          {{ discount() }}
+        </strong>
         <span class="price">{{ card.price }} &euro;</span>
       </div>
     </div>
@@ -88,11 +88,11 @@ export default {
     font-weight: 700;
     padding: 3px 5px;
 
-    &.sales-rate {
+    &.discount {
       background-color: $red;
     }
 
-    &.eco-tag {
+    &.tag {
       background-color: $green;
     }
 
