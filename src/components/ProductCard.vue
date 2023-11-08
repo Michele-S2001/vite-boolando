@@ -18,7 +18,9 @@ export default {
     },
 
     discount() {
-      const discount = (100 - Math.abs(parseInt(this.card.badges.at(-1).value))) / 100;
+      const discount = (100 - Math.abs(parseInt(this.card.badges.find((element)=> {
+        return element.type === 'discount'
+      }).value))) / 100;
       const discountedPrice = (this.card.price * discount).toFixed(2);
       return discountedPrice
     }
@@ -51,7 +53,7 @@ export default {
       <span class="brand">{{ card.brand }}</span>   
       <strong class="label">{{ card.name }}</strong>
       <div class="prices">
-        <strong v-if="card.badges.at(-1).type === 'discount'" class="price">
+        <strong v-if="card.badges.find((el) => el.type === 'discount')" class="price">
           {{ discount() }}
         </strong>
         <span class="price">{{ card.price }} &euro;</span>
@@ -143,7 +145,4 @@ export default {
 .col:hover .product-image-hover {
   opacity: 1;
 }
-
-
-
 </style>
