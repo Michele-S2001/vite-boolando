@@ -1,6 +1,5 @@
 <script>
 import ProductCard from './ProductCard.vue';
-// import productsObj from '../db.json';
 import { store } from '../store.js';
 
 export default {
@@ -11,8 +10,7 @@ export default {
   data() {
     return {
       store,
-      message: 'main',
-      //products: productsObj.products
+      message: 'main'
     }
   },
 }

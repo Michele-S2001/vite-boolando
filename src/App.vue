@@ -22,10 +22,7 @@ export default {
   created() {
     axios
       .get('http://localhost:3000/products')
-      .then((answer) => {
-        const serverProducts = answer.data;
-        this.store.products = serverProducts;
-      });
+      .then((answer) => (this.store.products = answer.data));
   }
 }
 
