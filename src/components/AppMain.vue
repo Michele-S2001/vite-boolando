@@ -1,7 +1,7 @@
 <script>
 import ProductCard from './ProductCard.vue';
 // import productsObj from '../db.json';
-import { store } from '../store.js'
+import { store } from '../store.js';
 
 export default {
   components: {
@@ -12,14 +12,9 @@ export default {
     return {
       store,
       message: 'main',
-      // products: productsObj.products
+      //products: productsObj.products
     }
   },
-
-  created() {
-    console.log(store);
-    console.log(store.products);
-  }
 }
 
 </script>
