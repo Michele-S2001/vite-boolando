@@ -9,10 +9,15 @@ export default {
 
   data() {
     return {
-      store,
       message: 'main'
     }
   },
+
+  computed: {
+    products() {
+      return store.products
+    }
+  }
 }
 
 </script>
@@ -22,7 +27,7 @@ export default {
   <main class="page-content">
     <div class="container">
       <div class="row">
-        <ProductCard v-for="(product) in store.products" :card="product"/>
+        <ProductCard v-for="(product) in products" :card="product"/>
       </div>
     </div>
   </main>
