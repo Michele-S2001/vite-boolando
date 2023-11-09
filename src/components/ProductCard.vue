@@ -23,6 +23,10 @@ export default {
       }).value))) / 100;
       const discountedPrice = (this.card.price * discount).toFixed(2);
       return discountedPrice
+    },
+
+    cardInfo() {
+      this.$emit('show', this.card)
     }
   },
 }
@@ -47,7 +51,10 @@ export default {
        class="product-sticker like-button"
        :class="{favorites: card.isInFavorites}">
        &hearts; 
-      </div>  
+      </div>
+      <span @click="cardInfo">
+        <img class="info" src="/img/generic-icons/circle-info-solid.svg" alt="info icon">
+      </span>  
     </div>
     <div class="product-description">
       <span class="brand">{{ card.brand }}</span>   
@@ -84,6 +91,15 @@ export default {
     gap: 5px;
     bottom: 20px;
     left: 0;
+  }
+
+  .info {
+    width: 24px;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
   }
 
   .product-sticker {
