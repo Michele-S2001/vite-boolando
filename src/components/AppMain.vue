@@ -76,7 +76,9 @@ export default {
           <p class="text">{{ productDesc }}</p>
           <p class="price">{{ productPrice }} &euro;</p>
         </div>
-        <!-- <div class="modal__image"></div> -->
+        <div class="image">
+          <img :src="currentProduct.frontImage">
+        </div>
       </div>
     </div>
   </div>
@@ -111,11 +113,32 @@ export default {
     .close-icon {
       width: 20px;
       cursor: pointer;
+      
+      &:hover {
+        filter: drop-shadow(0 0 2px $black);
+      }
     }
   }
 
   &__body {
     padding: 20px 10px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+
+    .description p {
+      margin-bottom: 1.5em;
+    }
+
+    .image {
+      max-width: 200px;
+      border-radius: 20px;
+
+      & img {
+        border-radius: 10px;
+        filter: drop-shadow(5px 5px 6px $black);
+      }
+    }
   }
 }
 
