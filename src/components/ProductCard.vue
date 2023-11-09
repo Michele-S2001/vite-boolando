@@ -1,6 +1,7 @@
 <script>
 
 export default {
+  emits: ['show'],
   props: {
     card: {
       type: Object,
